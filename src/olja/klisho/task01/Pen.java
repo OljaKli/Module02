@@ -1,4 +1,4 @@
-package olja.klisho.task01_;
+package olja.klisho.task01;
 
 import java.util.Objects;
 
@@ -34,7 +34,7 @@ public class Pen {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("olja.klisho.task01_.Pen{");
+        final StringBuilder sb = new StringBuilder("olja.klisho.task01.Pen{");
         sb.append("color='").append(color).append('\'');
         sb.append(", label='").append(label).append('\'');
         sb.append(", price=").append(Price);
