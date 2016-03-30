@@ -34,7 +34,7 @@ public class Pen {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("olja.klisho.task01.Pen{");
+        final StringBuilder sb = new StringBuilder("olja.klisho.task02.Pen{");
         sb.append("color='").append(color).append('\'');
         sb.append(", label='").append(label).append('\'');
         sb.append(", price=").append(Price);
