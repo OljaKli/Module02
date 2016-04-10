@@ -14,7 +14,7 @@ import java.util.List;
  */
 public class Employee {
 
-    @Test
+  //  @Test
     public void stationeryInspector() {
 
         List<Stationery> employee = new ArrayList<>();
@@ -36,11 +36,36 @@ public class Employee {
         System.out.println(a);
     }
 
+    private final String name;
+    private final String surname;
+    private final List<Stationery> set = new ArrayList<>(6);
+//
+    public String getName() {
+        return name;
+    }
 
-    public static BigDecimal stationeryPrice (List<Stationery> employee){
+    public String getSurname() {
+        return surname;
+    }
+
+    public List<Stationery> getSet() {
+        return set;
+    }
+//
+    public Employee (String name, String surname, List<Stationery> set){
+        this.name = name;
+        this.surname = surname;
+        this.set.addAll(set);
+        //addAll - adding from another collection
+
+    }
+
+
+
+    public static BigDecimal stationeryPrice (List<Stationery> employeeSet){
         BigDecimal totalPrice = BigDecimal.ZERO;
-       for (int index = 0; index < employee.size(); index++) {
-           BigDecimal itemPrice = employee.get(index).getPrice();
+       for (int index = 0; index < employeeSet.size(); index++) {
+           BigDecimal itemPrice = employeeSet.get(index).getPrice();
            totalPrice = totalPrice.add(itemPrice);
         }
         System.out.println(totalPrice);
