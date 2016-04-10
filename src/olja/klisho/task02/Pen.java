@@ -2,6 +2,7 @@ package olja.klisho.task02;
 
 import com.sun.corba.se.spi.ior.ObjectKey;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -11,13 +12,13 @@ import java.util.Objects;
  */
 public class Pen extends Stationery implements Coloured {
 
-    private final Double price;
     private final String label;
     private final CorporateColour colour;
 
-    public Pen (Double price, String label, CorporateColour colour) {
 
-     this.price = price;
+    public Pen (BigDecimal price, String label, CorporateColour colour) {
+
+     super(price);
      this.label = label;
      this.colour = colour;
 
@@ -31,22 +32,19 @@ public class Pen extends Stationery implements Coloured {
         return this.label;
     }
 
-    public Double getPrice () {
-        return this.price;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Pen pen = (Pen) o;
-        return Objects.equals(price, pen.price) &&
-                Objects.equals(label, pen.label) &&
-                Objects.equals(colour, pen.colour);
+        return Objects.equals(label, pen.label) &&
+                colour == pen.colour;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(price, label, colour);
+        return Objects.hash(super.hashCode(), label, colour);
     }
 }

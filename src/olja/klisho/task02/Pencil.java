@@ -1,5 +1,6 @@
 package olja.klisho.task02;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -7,12 +8,11 @@ import java.util.Objects;
  */
 public class Pencil extends Stationery implements Coloured {
 
-    private final Double price;
     private final String label;
     private final CorporateColour colour;
 
-    public Pencil (Double price, String label, CorporateColour colour) {
-        this.price = price;
+    public Pencil (BigDecimal price, String label, CorporateColour colour) {
+        super(price);
         this.label = label;
         this.colour = colour;
 
@@ -22,22 +22,18 @@ public class Pencil extends Stationery implements Coloured {
         return this.colour;
     }
 
-    public Double getPrice () {
-        return this.price;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Pencil pencil = (Pencil) o;
-        return Objects.equals(price, pencil.price) &&
-                Objects.equals(label, pencil.label) &&
-                Objects.equals(colour, pencil.colour);
+        return Objects.equals(label, pencil.label) &&
+                colour == pencil.colour;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(price, label, colour);
+        return Objects.hash(super.hashCode(), label, colour);
     }
 }

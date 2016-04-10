@@ -1,5 +1,6 @@
 package olja.klisho.task02;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -7,30 +8,25 @@ import java.util.Objects;
  */
 public class Rubber extends Stationery {
 
-    private final Double price;
     private final String label;
 
-    public Rubber(Double price, String label) {
+    public Rubber(BigDecimal price, String label) {
 
-        this.price = price;
+        super (price);
         this.label = label;
-    }
-
-    public Double getPrice () {
-        return this.price;
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Rubber rubber = (Rubber) o;
-        return Objects.equals(price, rubber.price) &&
-                Objects.equals(label, rubber.label);
+        return Objects.equals(label, rubber.label);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(price, label);
+        return Objects.hash(super.hashCode(), label);
     }
 }

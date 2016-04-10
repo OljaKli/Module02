@@ -1,5 +1,6 @@
 package olja.klisho.task02;
 
+import java.math.BigDecimal;
 import java.util.Objects;
 
 /**
@@ -7,30 +8,26 @@ import java.util.Objects;
  */
 public class Notepad extends Stationery {
 
-    private final Double price;
     private final String label;
 
-    public Notepad(Double price, String label) {
+    public Notepad(BigDecimal price, String label) {
 
-        this.price = price;
+        super(price);
         this.label = label;
     }
 
-    public Double getPrice () {
-        return this.price;
-    }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
+        if (!super.equals(o)) return false;
         Notepad notepad = (Notepad) o;
-        return Objects.equals(price, notepad.price) &&
-                Objects.equals(label, notepad.label);
+        return Objects.equals(label, notepad.label);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(price, label);
+        return Objects.hash(super.hashCode(), label);
     }
 }
