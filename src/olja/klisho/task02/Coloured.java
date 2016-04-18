@@ -7,7 +7,7 @@ public interface Coloured {
 
     CorporateColour getColour();
 
-    public enum CorporateColour{
+    public enum CorporateColour {
         GREEN,
         BLUE,
         RED,

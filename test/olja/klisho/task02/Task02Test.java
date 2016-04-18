@@ -35,7 +35,9 @@ public class Task02Test {
         Pencil pencil1 = new Pencil(BigDecimal.valueOf(10.11), "parker", Coloured.CorporateColour.GREEN);
         employeeSet.add(pencil1);
 
-        BigDecimal price = Employee.stationeryPrice(employeeSet);
+        Employee emp = new Employee("Vasiliy", "Terkin", employeeSet);
+        BigDecimal price = emp.stationeryPrice();
+                //Employee.stationeryPrice(employeeSet);
 
 
         //System.out.println(price);

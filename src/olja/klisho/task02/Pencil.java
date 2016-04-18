@@ -8,12 +8,10 @@ import java.util.Objects;
  */
 public class Pencil extends Stationery implements Coloured {
 
-    private final String label;
     private final CorporateColour colour;
 
-    public Pencil (BigDecimal price, String label, CorporateColour colour) {
-        super(price);
-        this.label = label;
+    public Pencil(BigDecimal price, String label, CorporateColour colour) {
+        super(price, label);
         this.colour = colour;
 
     }
@@ -22,18 +20,28 @@ public class Pencil extends Stationery implements Coloured {
         return this.colour;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Pencil pencil = (Pencil) o;
-        return Objects.equals(label, pencil.label) &&
-                colour == pencil.colour;
+        return colour == pencil.colour;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), label, colour);
+        return Objects.hash(super.hashCode(), colour);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Pencil{");
+        sb.append("price=").append(getPrice());
+        sb.append(", label='").append(getLabel()).append('\'');
+        sb.append(", colour='").append(getColour()).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

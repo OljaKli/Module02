@@ -12,24 +12,18 @@ import java.util.Objects;
  */
 public class Pen extends Stationery implements Coloured {
 
-    private final String label;
+
     private final CorporateColour colour;
 
+    public Pen(BigDecimal price, String label, CorporateColour colour) {
 
-    public Pen (BigDecimal price, String label, CorporateColour colour) {
-
-     super(price);
-     this.label = label;
-     this.colour = colour;
+        super(price, label);
+        this.colour = colour;
 
     }
 
-    public CorporateColour getColour () {
+    public CorporateColour getColour() {
         return this.colour;
-    }
-
-    public String getLabel () {
-        return this.label;
     }
 
 
@@ -39,12 +33,21 @@ public class Pen extends Stationery implements Coloured {
         if (o == null || getClass() != o.getClass()) return false;
         if (!super.equals(o)) return false;
         Pen pen = (Pen) o;
-        return Objects.equals(label, pen.label) &&
-                colour == pen.colour;
+        return colour == pen.colour;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(super.hashCode(), label, colour);
+        return Objects.hash(super.hashCode(), colour);
+    }
+
+    @Override
+    public String toString() {
+        final StringBuilder sb = new StringBuilder("Pen{");
+        sb.append("price=").append(getPrice());
+        sb.append(", label='").append(getLabel()).append('\'');
+        sb.append(", colour='").append(getColour()).append('\'');
+        sb.append('}');
+        return sb.toString();
     }
 }

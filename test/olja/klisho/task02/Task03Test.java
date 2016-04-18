@@ -17,10 +17,8 @@ public class Task03Test {
         Employee employee1 = new Employee("Pavel", "Barashkin", Stationery.STARTER_KIT);
         System.out.println(employee1);
 
-        List<Stationery> set = employee1.getSet();
-        BigDecimal priceOfSet = Employee.stationeryPrice(set);
+        BigDecimal priceOfSet = employee1.stationeryPrice();
 
-        System.out.println(priceOfSet);
         assertEquals(BigDecimal.valueOf(167), priceOfSet);
     }
 }
